@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Users;
+use App\Http\Resources\CompanyResource;
 use Illuminate\Http\Request;
+use App\Models\Companies;
+use App\Models\Task;
 
-class UsersController extends Controller
+class CompanyController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
-    }
+       return CompanyResource::collection(Companies::with(['task'])->get());
+}
 
     /**
      * Store a newly created resource in storage.
@@ -26,7 +28,7 @@ class UsersController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Users $users)
+    public function show(string $id)
     {
         //
     }
@@ -34,7 +36,7 @@ class UsersController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Users $users)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -42,7 +44,7 @@ class UsersController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Users $users)
+    public function destroy(string $id)
     {
         //
     }

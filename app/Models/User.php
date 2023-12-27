@@ -42,4 +42,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    //Función para declarar la relación entre la tabla users y tasks
+    public function tasks(){
+
+        return $this->hasMany(Task::class);
+    }
 }
